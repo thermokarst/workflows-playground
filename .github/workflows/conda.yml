@@ -9,11 +9,18 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: debug conda
-        run: conda info
+      - name: configure conda
+        run: |
+          source "$HOME/miniconda/etc/profile.d/conda.sh"
+          hash -r
+          conda config --set always_yes yes --set changeps1 no
+          conda update -q conda
+          conda info -a
 
       - name: test out creating an env
-        run: conda create -p ./test-env
+        run: conda create -q -p ./test-env
 
       - name: try out activation...
-        run: source activate ./test-env
+        run: |
+          conda activate ./test-env
+          conda list
