@@ -10,7 +10,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - name: debug conda
-        run: $CONDA/bin/conda info
+        run: conda info
 
       - name: test out creating an env
-        run: $CONDA/bin/conda create -p ./test-env
+        run: conda create -p ./test-env
+
+      - name: try out activation...
+        run: conda activate ./test-env
