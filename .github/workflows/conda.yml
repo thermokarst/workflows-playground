@@ -9,9 +9,12 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
+      - name: debug conda path
+        run: ls -lah $CONDA
+
       - name: configure conda
         run: |
-          source "$HOME/miniconda/etc/profile.d/conda.sh"
+          source "$CONDA/etc/profile.d/conda.sh"
           hash -r
           conda config --set always_yes yes --set changeps1 no
           conda update -q conda
