@@ -18,6 +18,7 @@ jobs:
             --set changeps1 no
           echo "pkgs_dirs:\n    - $HOME/.conda/pkgs\n" >> $HOME/.condarc
           echo "envs_dirs:\n    - $HOME/.conda/envs\n" >> $HOME/.condarc
+          cat $HOME/.condarc
           conda update -q conda
           conda info -a
 
