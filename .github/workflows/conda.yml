@@ -26,4 +26,5 @@ jobs:
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
           conda activate ./test-env
+          conda install flake8
           conda list
