@@ -23,6 +23,11 @@ jobs:
         run: |
           conda create -q -p ./test-env
 
+      - name: debug
+        run: |
+          ls -lah $HOME
+          ls -lah $HOME/.conda
+
       - name: try out activation...
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
