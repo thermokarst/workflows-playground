@@ -13,4 +13,7 @@ jobs:
         run: echo $PATH
 
       - name: debug conda
-        run: which conda
+        run: conda info
+
+      - name: debug env
+        run: env
