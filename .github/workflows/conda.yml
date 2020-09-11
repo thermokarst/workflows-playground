@@ -9,11 +9,8 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: debug path
-        run: echo $PATH
-
       - name: debug conda
-        run: conda info
+        run: $CONDA/bin/conda info
 
-      - name: debug env
-        run: env
+      - name: test out creating an env
+        run: $CONDA/bin/conda create -p ./test-env
