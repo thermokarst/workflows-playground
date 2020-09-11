@@ -1,0 +1,16 @@
+name: check out native conda
+
+on: [push]
+
+jobs:
+  check-it-out:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - name: debug path
+        run: echo $PATH
+
+      - name: debug conda
+        run: which conda
