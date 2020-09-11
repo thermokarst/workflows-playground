@@ -16,8 +16,8 @@ jobs:
           conda config \
             --set always_yes yes \
             --set changeps1 no \
-            --set pkgs_dir $HOME/.conda/pkgs \
-            --set envs_dir $HOME/.conda/envs
+            --set pkgs_dirs $HOME/.conda/pkgs \
+            --set envs_dirs $HOME/.conda/envs
           conda update -q conda
           conda info -a
 
