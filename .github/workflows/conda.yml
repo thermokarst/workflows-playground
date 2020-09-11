@@ -9,14 +9,15 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - name: debug conda path
-        run: ls -lah $CONDA
-
       - name: configure conda
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
           hash -r
-          conda config --set always_yes yes --set changeps1 no
+          conda config \
+            --set always_yes yes \
+            --set changeps1 no \
+            --set pkgs_dir $HOME/.conda/pkgs \
+            --set envs_dir $HOME/.conda/envs
           conda update -q conda
           conda info -a
 
