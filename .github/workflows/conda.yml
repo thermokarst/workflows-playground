@@ -12,22 +12,18 @@ jobs:
       - name: configure conda
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
-          # hash -r
-          conda config \
-            --set always_yes yes \
-            --set changeps1 no
+          conda config --set always_yes yes --set changeps1 no
           echo -e "pkgs_dirs:\n    - $HOME/.conda/pkgs" >> $HOME/.condarc
           echo -e "envs_dirs:\n    - $HOME/.conda/envs" >> $HOME/.condarc
-          cat $HOME/.condarc
           sudo conda update -q conda
           conda info -a
 
       - name: test out creating an env
-        run: conda create -q -p ./test-env
+        run: |
+          conda create -q -p ./test-env
 
       - name: try out activation...
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
-          # hash -r
           conda activate ./test-env
           conda list
