@@ -11,14 +11,13 @@ jobs:
     steps:
       - name: configure conda
         run: |
-          touch $HOME/.condarc
-          echo "pkgs_dirs:\n    - $HOME/.conda/pkgs\n" >> $HOME/.condarc
-          echo "envs_dirs:\n    - $HOME/.conda/envs\n" >> $HOME/.condarc
           source "$CONDA/etc/profile.d/conda.sh"
           hash -r
           conda config \
             --set always_yes yes \
             --set changeps1 no
+          echo "pkgs_dirs:\n    - $HOME/.conda/pkgs\n" >> $HOME/.condarc
+          echo "envs_dirs:\n    - $HOME/.conda/envs\n" >> $HOME/.condarc
           conda update -q conda
           conda info -a
 
