@@ -16,8 +16,8 @@ jobs:
           conda config \
             --set always_yes yes \
             --set changeps1 no
-          echo -e "pkgs_dirs:\n    - $HOME/.conda/pkgs\n" >> $HOME/.condarc
-          echo -e "envs_dirs:\n    - $HOME/.conda/envs\n" >> $HOME/.condarc
+          echo -e "pkgs_dirs:\n    - $HOME/.conda/pkgs" >> $HOME/.condarc
+          echo -e "envs_dirs:\n    - $HOME/.conda/envs" >> $HOME/.condarc
           cat $HOME/.condarc
           conda update -q conda
           conda info -a
@@ -27,5 +27,7 @@ jobs:
 
       - name: try out activation...
         run: |
+          source "$CONDA/etc/profile.d/conda.sh"
+          hash -r
           conda activate ./test-env
           conda list
