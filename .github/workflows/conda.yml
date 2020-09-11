@@ -19,7 +19,7 @@ jobs:
           echo -e "pkgs_dirs:\n    - $HOME/.conda/pkgs" >> $HOME/.condarc
           echo -e "envs_dirs:\n    - $HOME/.conda/envs" >> $HOME/.condarc
           cat $HOME/.condarc
-          conda update -q conda
+          sudo conda update -q conda
           conda info -a
 
       - name: test out creating an env
