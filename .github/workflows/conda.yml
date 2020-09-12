@@ -16,19 +16,15 @@ jobs:
           echo -e "pkgs_dirs:\n    - $HOME/.conda/pkgs" >> $HOME/.condarc
           echo -e "envs_dirs:\n    - $HOME/.conda/envs" >> $HOME/.condarc
           mkdir -p $HOME/.conda/{pkgs,envs}
+          ls -lah $HOME/.conda
           sudo chmod -R 644 $HOME/.conda
+          ls -lah $HOME/.conda
           sudo conda update -q conda
           conda info -a
 
       - name: test out creating an env
         run: |
           conda create -q -p ./test-env
-
-      - name: debug
-        run: |
-          ls -lah $HOME
-          ls -lah $HOME/.conda
-          ls -lah $HOME/.conda/pkgs
 
       - name: try out activation...
         run: |
