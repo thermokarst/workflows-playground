@@ -16,7 +16,7 @@ jobs:
           echo -e "pkgs_dirs:\n    - $HOME/.conda/pkgs" >> $HOME/.condarc
           echo -e "envs_dirs:\n    - $HOME/.conda/envs" >> $HOME/.condarc
           mkdir -p $HOME/.conda/{pkgs,envs}
-          chmod -R 600 $HOME/.conda
+          chmod -R 644 $HOME/.conda
           sudo conda update -q conda
           conda info -a
 
