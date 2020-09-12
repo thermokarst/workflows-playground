@@ -27,10 +27,11 @@ jobs:
         run: |
           ls -lah $HOME
           ls -lah $HOME/.conda
+          ls -lah $HOME/.conda/pkgs
 
       - name: try out activation...
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
           conda activate ./test-env
-          conda install flake8
+          sudo conda install flake8
           conda list
