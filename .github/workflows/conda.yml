@@ -17,8 +17,7 @@ jobs:
           echo -e "envs_dirs:\n    - $HOME/.conda/envs" >> $HOME/.condarc
           mkdir -p $HOME/.conda/{pkgs,envs}
           touch $HOME/.conda/environments.txt
-          env
-          ls -lah $HOME/.conda
+          ls -lah $HOME/.conda/pkgs
           sudo conda update -q conda
           conda info -a
 
