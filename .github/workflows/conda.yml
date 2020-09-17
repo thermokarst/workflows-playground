@@ -22,7 +22,7 @@ jobs:
 
       - name: debug
         run: |
-          ls -lah /tmp
+          ls -lah /$CONDA
 
       - name: try out activation...
         run: |
