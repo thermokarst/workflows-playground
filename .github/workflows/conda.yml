@@ -13,11 +13,8 @@ jobs:
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
           conda config --set always_yes yes --set changeps1 no
-          echo -e "pkgs_dirs:\n    - $HOME/.conda/pkgs" >> $HOME/.condarc
-          echo -e "envs_dirs:\n    - $HOME/.conda/envs" >> $HOME/.condarc
-          mkdir -p $HOME/.conda/{pkgs,envs}
-          touch $HOME/.conda/environments.txt
-          ls -lah $HOME/.conda/pkgs
+          echo -e "pkgs_dirs:\n    - /tmp/pkgs" >> $HOME/.condarc
+          echo -e "envs_dirs:\n    - /tmp/envs" >> $HOME/.condarc
           sudo conda update -q conda
           conda info -a
 
