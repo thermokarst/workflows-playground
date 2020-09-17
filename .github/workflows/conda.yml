@@ -15,7 +15,7 @@ jobs:
           conda config --set always_yes yes --set changeps1 no
           echo -e "pkgs_dirs:\n    - $HOME/.conda/pkgs" >> $HOME/.condarc
           echo -e "envs_dirs:\n    - $HOME/.conda/envs" >> $HOME/.condarc
-          sudo mkdir -p $HOME/.conda/{pkgs,envs}
+          mkdir -p $HOME/.conda/{pkgs,envs}
           touch $HOME/.conda/environments.txt
           ls -lah $HOME/.conda
           sudo conda update -q conda
@@ -29,5 +29,5 @@ jobs:
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
           conda activate ./test-env
-          conda install flake8
+          sudo conda install flake8
           conda list
