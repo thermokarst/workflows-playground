@@ -1,6 +1,10 @@
 name: check out native conda
 
-on: [push]
+on:
+  push:
+    paths-ignore:
+      - 'misc/**'
+
 
 jobs:
   check-it-out:
@@ -20,13 +24,17 @@ jobs:
         run: |
           conda create -q -p ./test-env
 
-      - name: debug
-        run: |
-          ls -lah /$CONDA
-
       - name: try out activation...
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
           conda activate ./test-env
           sudo conda install flake8
-          conda list
+          conda list > dontcommitme.txt
+          cp dontcommitme.txt misc/${{ matrix.os }}.txt
+
+      - name: commit results
+        run: |
+          git config --global user.name 'thermokarst'
+          git config --global user.email 'thermokarst@users.noreply.github.com'
+          git commit -i 'misc/*' -m "CI: ${{ matrix }}"
+          git push
