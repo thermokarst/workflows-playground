@@ -37,5 +37,5 @@ jobs:
         run: |
           git config --global user.name 'thermokarst'
           git config --global user.email 'thermokarst@users.noreply.github.com'
-          git commit -i 'misc/*' -m "CI: ${{ matrix }}"
+          git commit -i 'misc/${{ matrix }}.txt' -m "CI: ${{ matrix }}"
           git push
