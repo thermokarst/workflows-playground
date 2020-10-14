@@ -29,13 +29,13 @@ jobs:
           conda activate ./test-env
           sudo conda install flake8
           conda list > dontcommitme.txt
-          cp dontcommitme.txt misc/${{ matrix.os }}.txt
+          cp dontcommitme.txt ${{ matrix.os }}.txt
 
       - name: cache env
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.os }}
-          path: misc/${{ matrix.os }}
+          path: ${{ matrix.os }}
 
   commit-the-results:
     runs-on: ubuntu-latest
