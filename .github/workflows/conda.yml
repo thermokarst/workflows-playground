@@ -47,13 +47,18 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: ubuntu-latest.txt
-          path: misc/ubuntu-latest.txt
+          path: ubuntu-latest.txt
 
       - name: fetch macos env
         uses: actions/download-artifact@v2
         with:
           name: macos-latest.txt
-          path: misc/macos-latest.txt
+          path: macos-latest.txt
+
+      - name: move results to final resting place
+        run: |
+          mv ubuntu-latest.txt misc/
+          mv macos-latest.txt misc/
 
       - name: commit results
         run: |
