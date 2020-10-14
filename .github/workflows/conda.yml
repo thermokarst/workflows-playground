@@ -5,7 +5,6 @@ on:
     paths-ignore:
       - 'misc/**'
 
-
 jobs:
   check-it-out:
     strategy:
@@ -13,7 +12,6 @@ jobs:
         os: [ubuntu-latest, macos-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v2
       - name: configure conda
         run: |
           source "$CONDA/etc/profile.d/conda.sh"
@@ -33,9 +31,36 @@ jobs:
           conda list > dontcommitme.txt
           cp dontcommitme.txt misc/${{ matrix.os }}.txt
 
+      - name: cache env
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.os }}
+          path: misc/${{ matrix.os }}
+
+  commit-the-results:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: fetch linux env
+        uses: actions/download-artifact@vs
+        with:
+          name: ubuntu-latest
+          path: misc/ubuntu-latest.txt
+
+      - name: fetch macos env
+        uses: actions/download-artifact@vs
+        with:
+          name: macos-latest
+          path: misc/macos-latest.txt
+
       - name: commit results
         run: |
           git config --global user.name 'thermokarst'
           git config --global user.email 'thermokarst@users.noreply.github.com'
-          git commit misc/${{ matrix.os }}.txt --allow-empty -m "CI: ${{ matrix.os }}"
-          git push --force-with-lease
+          git commit \
+            misc/ubuntu-latest.txt \
+            misc/macos-latest.txt \
+            --allow-empty \
+            -m "CI: updated envs"
+          git push
