@@ -37,5 +37,4 @@ jobs:
         run: |
           git config --global user.name 'thermokarst'
           git config --global user.email 'thermokarst@users.noreply.github.com'
-          git stash && git fetch && git merge && git stash pop
           git commit misc/${{ matrix.os }}.txt --allow-empty -m "CI: ${{ matrix.os }}" && git push
