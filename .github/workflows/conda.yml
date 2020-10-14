@@ -43,22 +43,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: fetch linux env
+      - name: fetch envs
         uses: actions/download-artifact@v2
         with:
-          name: ubuntu-latest.txt
-          path: ubuntu-latest.txt
-
-      - name: fetch macos env
-        uses: actions/download-artifact@v2
-        with:
-          name: macos-latest.txt
-          path: macos-latest.txt
+          path: tmp-envs-dir
 
       - name: move results to final resting place
         run: |
-          mv ubuntu-latest.txt misc/
-          mv macos-latest.txt misc/
+          mv tmp-envs-dir/* misc/
 
       - name: commit results
         run: |
