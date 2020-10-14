@@ -34,8 +34,8 @@ jobs:
       - name: cache env
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.os }}.txt
-          path: ${{ matrix.os }}.txt
+          name: ${{ matrix.os }}
+          path: ${{ matrix.os }}
 
   commit-the-results:
     runs-on: ubuntu-latest
@@ -50,7 +50,8 @@ jobs:
 
       - name: move results to final resting place
         run: |
-          mv tmp-envs-dir/* misc/
+          mv tmp-envs-dir/ubuntu-latest/* misc/
+          mv tmp-envs-dir/macos-latest/* misc/
 
       - name: commit results
         run: |
