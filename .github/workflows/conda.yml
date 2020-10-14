@@ -35,7 +35,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.os }}
-          path: ${{ matrix.os }}
+          path: ${{ matrix.os }}.txt
 
   commit-the-results:
     runs-on: ubuntu-latest
