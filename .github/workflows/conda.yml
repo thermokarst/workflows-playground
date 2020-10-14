@@ -38,4 +38,4 @@ jobs:
           git config --global user.name 'thermokarst'
           git config --global user.email 'thermokarst@users.noreply.github.com'
           git fetch && git merge
-          git commit misc/${{ matrix.os }}.txt "CI: ${{ matrix.os }}" && git push
+          git commit misc/${{ matrix.os }}.txt -m "CI: ${{ matrix.os }}" && git push
