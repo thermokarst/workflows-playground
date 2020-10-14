@@ -39,6 +39,7 @@ jobs:
 
   commit-the-results:
     runs-on: ubuntu-latest
+    needs: check-it-out
     steps:
       - uses: actions/checkout@v2
 
