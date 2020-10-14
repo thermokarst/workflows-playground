@@ -34,8 +34,8 @@ jobs:
       - name: cache env
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ matrix.os }}
-          path: ${{ matrix.os }}
+          name: ${{ matrix.os }}.txt
+          path: ${{ matrix.os }}.txt
 
   commit-the-results:
     runs-on: ubuntu-latest
@@ -45,13 +45,13 @@ jobs:
       - name: fetch linux env
         uses: actions/download-artifact@v2
         with:
-          name: ubuntu-latest
+          name: ubuntu-latest.txt
           path: misc/ubuntu-latest.txt
 
       - name: fetch macos env
         uses: actions/download-artifact@v2
         with:
-          name: macos-latest
+          name: macos-latest.txt
           path: misc/macos-latest.txt
 
       - name: commit results
