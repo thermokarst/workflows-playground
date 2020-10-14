@@ -1,4 +1,3 @@
-# packages in environment at /home/runner/work/workflows-playground/workflows-playground/test-env:
+# packages in environment at /Users/runner/work/workflows-playground/workflows-playground/test-env:
 #
 # Name                    Version                   Build  Channel
-adf
