@@ -43,13 +43,13 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: fetch linux env
-        uses: actions/download-artifact@vs
+        uses: actions/download-artifact@v2
         with:
           name: ubuntu-latest
           path: misc/ubuntu-latest.txt
 
       - name: fetch macos env
-        uses: actions/download-artifact@vs
+        uses: actions/download-artifact@v2
         with:
           name: macos-latest
           path: misc/macos-latest.txt
