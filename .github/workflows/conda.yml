@@ -38,4 +38,4 @@ jobs:
           git config --global user.name 'thermokarst'
           git config --global user.email 'thermokarst@users.noreply.github.com'
           git commit misc/${{ matrix.os }}.txt --allow-empty -m "CI: ${{ matrix.os }}"
-          git push +
+          git push --force-with-lease
